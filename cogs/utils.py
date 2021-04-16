@@ -7,7 +7,7 @@ class Utils(commands.Cog, name = "Utilities"):
       # self.weather_key = os.environ['OPENWEATHER_API_KEY']
       self.weather_key = "fb9df86d9c484eba8a69269cfb0beac9"
     
-    @commands.command()
+    @commands.command(name="Weather", aliases = ['weather'], brief = "Get current weather of city", description = "This command gets weather of the city passed on it. May or may not be accurate.")
     async def weather(self, ctx,  *, city):
         data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={self.weather_key}").json()
         
