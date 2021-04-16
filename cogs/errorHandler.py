@@ -21,7 +21,7 @@ class ExceptionHandler(commands.Cog):
         url = json.load(open('.\\assets\\keys.json', 'r'))['ERROR_WEBHOOK']
         timestamp = str(datetime.datetime.utcnow())
         await ctx.send('An internal error occurred! We are very sorry.\nPease DM the following to `Zukashi#7071`:')
-        await ctx.send('`DPY-002_{}`'.format(timestamp))
+        await ctx.send('`DPY-001_{}`'.format(timestamp))
         msg = 'DPY-001_{}\n```{}```'.format(timestamp, tbctext)
         data = {
             'content': msg
