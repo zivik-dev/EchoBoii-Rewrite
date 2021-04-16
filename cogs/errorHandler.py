@@ -3,6 +3,7 @@ import traceback
 import json
 import requests
 import datetime
+import os
 
 class ExceptionHandler(commands.Cog):
     """Ignore this. This cog handles errors"""
@@ -18,7 +19,7 @@ class ExceptionHandler(commands.Cog):
         for i in tbc:
             tbctext += i
         
-        url = json.load(open('.\\assets\\keys.json', 'r'))['ERROR_WEBHOOK']
+        url = os.environ["WEBHOOK_URL"]
         timestamp = str(datetime.datetime.utcnow())
         await ctx.send('An internal error occurred! We are very sorry.\nPease DM the following to `Zukashi#7071`:')
         await ctx.send('`DPY-001_{}`'.format(timestamp))
