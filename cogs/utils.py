@@ -9,7 +9,7 @@ class Utils(commands.Cog, name = "Utilities"):
     
     @commands.command()
     async def weather(self, ctx,  *, city):
-        data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID=fb9df86d9c484eba8a69269cfb0beac9").json()
+        data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={self.weather_key}").json()
         cleared_data = {
             'City': data['name'],
             'Weather': f"{data['weather'][0]['main']} - {data['weather'][0]['description']}",
