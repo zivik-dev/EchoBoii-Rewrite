@@ -26,5 +26,5 @@ async def on_ready():
 
 
 print('debug: RUN: Connecting to discordapp.com:443 (Running client token) . . . /')
-bot.run("NzMyNjI5MjEzOTQ0ODczMDQx.Xw3YIA.1siSbRDGkU5qRhljO6pFNhL0LhA")
+bot.run(os.environ["DISCORD_TOKEN"])
 print('debug: INFO: bot.run success . . . /')
