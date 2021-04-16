@@ -10,7 +10,9 @@ print("debug: INFO: Setting up bot . . . /")
 bot = commands.Bot(command_prefix = prefixes, help_command=PrettyHelp())
 
 print("debug: INFO: Loading Cogs . . . /")
-initial_extensions = []
+initial_extensions = [
+    "cogs.utils"
+]
 
 if __name__ == '__main__':
     for extension in initial_extensions:
