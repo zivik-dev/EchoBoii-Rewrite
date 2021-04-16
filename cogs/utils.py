@@ -10,7 +10,8 @@ class Utils(commands.Cog, name = "Utilities"):
     @commands.command()
     async def weather(self, ctx,  *, city):
         data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={self.weather_key}").json()
-        cleared_data = {
+        
+        sorted_data = {
             'City': data['name'],
             'Weather': f"{data['weather'][0]['main']} - {data['weather'][0]['description']}",
             'Temperature': f"{data['main']['temp']}°C",
@@ -19,9 +20,12 @@ class Utils(commands.Cog, name = "Utilities"):
             'Clouds': f"{data['clouds']['all']}%",
             'Wind': f"{data['wind']['speed']} km/h"
         }
-        embed = Embed(title=f":white_sun_small_cloud: Weather in {cleared_data['City']}", color=0x3498db)
-        for key, value in cleared_data.items():
+        
+        embed = Embed(title=f":white_sun_small_cloud: Weather in {sorted_data['City']}", color=0x3498db)
+                      
+        for key, value in sorted_data.items():
             embed.add_field(name=key, value=value)
+                      
         await ctx.send(embed=embed)
    
 def setup(bot):
