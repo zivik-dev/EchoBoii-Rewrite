@@ -44,4 +44,4 @@ class Utils(commands.Cog, name = "Utilities"):
             await ctx.send(cleanhtml(data.text.split('<p>')[1]))
    
 def setup(bot):
-    bot.add_cog(Utilities(bot))
+    bot.add_cog(Utils(bot))
