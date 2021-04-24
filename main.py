@@ -4,6 +4,7 @@ from discord.ext import commands
 import discord
 import json
 from pretty_help import PrettyHelp
+import os
 
 prefixes = ["eb ", "eB", "EB", "Eb"]
 print("debug: INFO: Setting up bot . . . /")
