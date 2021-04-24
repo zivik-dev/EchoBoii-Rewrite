@@ -1,5 +1,5 @@
 from discord.ext import commands
-from requests
+import requests
 import os
 import re
 from urllib.parse import quote as urlfix
