@@ -1,6 +1,13 @@
 from discord.ext import commands
 from requests
 import os
+import re
+from urllib.parse import quote as urlfix
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext
 
 class Utils(commands.Cog, name = "Utilities"):
     def __init__(self, bot):
@@ -27,6 +34,14 @@ class Utils(commands.Cog, name = "Utilities"):
             embed.add_field(name=key, value=value)
                       
         await ctx.send(embed=embed)
+
+    @commands.command(name="Wikipedia", aliases=['wiki', 'wikipedia'], brief="Get summary of a wikipedia article", description="This commands gets summary of a topic from a wikipedia article. Usage: eb wiki Bruno Mars")
+    async def wikipedia(self, ctx, *, query):
+        data = requests.get('https://en.wikipedia.org/wiki/{}'.format(urlfix(query)))
+        if data.status_code != 200:
+            await ctx.send('Sorry, could not find any data.\nDetails: `STATUS_CODE != 200')
+        else:
+            await ctx.send(cleanhtml(data.text.split('<p>')[1]))
    
 def setup(bot):
     bot.add_cog(Utilities(bot))
