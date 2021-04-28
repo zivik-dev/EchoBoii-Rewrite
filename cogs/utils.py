@@ -38,7 +38,7 @@ class Utils(commands.Cog, name = "Utilities"):
     async def wikipedia(self, ctx, *, query):
         data = requests.get('https://en.wikipedia.org/wiki/{}'.format(urlfix(query)))
         if data.status_code != 200:
-            await ctx.send('Sorry, could not find any data.\nDetails: `STATUS_CODE != 200')
+            await ctx.send('Sorry, could not find any data. Try removing any extra spaces or an \'s\'.\nExample: Type \'fruit\' instead of \'fruits\'\nDetails: `STATUS_CODE != 200')
         else:
             await ctx.send(cleanBraces(htm.fromstring(data.text.split('<p>')[1].split('</p>')[0]).text_content()))
    
