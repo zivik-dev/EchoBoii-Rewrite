@@ -4,6 +4,10 @@ import os
 import re
 import lxml.html as htm
 from urllib.parse import quote as urlfix
+from googletrans import Translator
+from langcodes import Language
+
+translator = Translator()
 
 def cleanBraces(rtext):
   return re.sub(r"\[[^[]]*\]", "", rtext) # HAHAHAHAH GOT IT, GET REKT
@@ -41,6 +45,12 @@ class Utils(commands.Cog, name = "Utilities"):
             await ctx.send('Sorry, could not find any data. Try removing any extra spaces or an \'s\'.\nExample: Type \'fruit\' instead of \'fruits\'\nDetails: `STATUS_CODE != 200')
         else:
             await ctx.send(cleanBraces(htm.fromstring(data.text.split('<p>')[1].split('</p>')[0]).text_content()))
+
+    @commands.command(name="Google Translate", aliases=['gtrans', 'translate'], brief='Translate text to a wide variety of languages.', description='This command translates text to another language. Usage: eb translate en jus de chocolat (Output -> Chocolate Juice)')
+    async def gtrans(self, ctx, langcode, *, text):
+        tobj = translator.translate(text, dest=langcode)
+        srcl = Language.make(language=tobj.src).display_name()
+        await ctx.send('**__Original Text:__** {}\n**__Translated Text:__** {}\n**__Pronounciation:__** {}\n**__Source Language:__** {}'.format(text, tobj.text, tobj.pronunciation, srcl))
    
 def setup(bot):
     bot.add_cog(Utils(bot))
