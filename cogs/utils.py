@@ -2,12 +2,11 @@ from discord.ext import commands
 import requests
 import os
 import re
+import lxml.html as htm
 from urllib.parse import quote as urlfix
 
-def cleanhtml(raw_html):
-  cleanr = re.compile('<.*?>')
-  cleantext = re.sub(cleanr, '', raw_html)
-  return cleantext
+def cleanBraces(rtext):
+  return re.sub(r"\[[^[]]*\]", "", rtext) # HAHAHAHAH GOT IT, GET REKT
 
 class Utils(commands.Cog, name = "Utilities"):
     def __init__(self, bot):
@@ -41,7 +40,7 @@ class Utils(commands.Cog, name = "Utilities"):
         if data.status_code != 200:
             await ctx.send('Sorry, could not find any data.\nDetails: `STATUS_CODE != 200')
         else:
-            await ctx.send(cleanhtml(data.text.split('<p>')[1]))
+            await ctx.send(cleanBraces(htm.fromstring(data.text.split('<p>')[1].split('</p>')[0]).text_content()))
    
 def setup(bot):
     bot.add_cog(Utils(bot))
