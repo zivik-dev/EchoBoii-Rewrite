@@ -30,9 +30,5 @@ class ExceptionHandler(commands.Cog):
 
         requests.post(url, data)
 
-    @commands.command()
-    async def errortest(self, ctx):
-        raise Exception('valid exception')
-
 def setup(bot):
     bot.add_cog(ExceptionHandler(bot))
