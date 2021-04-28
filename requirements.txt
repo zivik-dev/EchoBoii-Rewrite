@@ -1,3 +1,4 @@
 discord-pretty-help
 requests
 discord.py
+lxml
