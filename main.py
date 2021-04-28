@@ -12,7 +12,11 @@ bot = commands.Bot(command_prefix = prefixes, help_command=PrettyHelp())
 
 print("debug: INFO: Loading Cogs . . . /")
 initial_extensions = [
-    "cogs.utils"
+    "cogs.utils",
+    "cogs.errorHandler",
+    "cogs.mostUsed",
+    "cogs.stats",
+    "cogs.oldUtils"
 ]
 
 if __name__ == '__main__':
@@ -26,6 +30,6 @@ async def on_ready():
     print(f"debug: STATUS: {bot.user} is online on Discord successfully")
 
 
-print('debug: RUN: Connecting to discordapp.com:443 (Running client token) . . . /')
+print('debug: RUN: Connecting to Discord (Running client token) . . . /')
 bot.run(os.environ["DISCORD_TOKEN"])
 print('debug: INFO: bot.run success . . . /')
