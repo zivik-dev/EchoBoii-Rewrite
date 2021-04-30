@@ -43,6 +43,8 @@ class Utils(commands.Cog, name = "Utilities"):
         }
 
         requests.post(url, data)
+        
+        await ctx.send('Message Sent :white_check_mark:')
    
 def setup(bot):
     bot.add_cog(Utils(bot))
