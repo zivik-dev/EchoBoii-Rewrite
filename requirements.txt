@@ -5,3 +5,8 @@ lxml
 googletrans==3.1.0a0
 langcodes
 language_data
+pytz
+datadog
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
