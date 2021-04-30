@@ -42,7 +42,7 @@ class OldCommands(commands.Cog, name='Old Utilities'):
         embed = discord.Embed(
         title = 'Server Information',
         description = f'Server Information for {server.name}',
-        colour = server.owner.colour
+        colour = self.bot.user.color
         )
 
         embed.set_thumbnail(url = server.icon_url)
