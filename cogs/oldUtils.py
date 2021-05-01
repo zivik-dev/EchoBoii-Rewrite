@@ -60,7 +60,7 @@ class OldCommands(commands.Cog, name='Old Utilities'):
 
         await ctx.send(embed = embed)
 
-    @commands.command(name="weather", aliases = ['weather'], brief = "Get current weather of city", description = "This command gets weather of the city passed on it. May or may not be accurate.")
+    @commands.command(name="weather", brief = "Get current weather of city", description = "This command gets weather of the city passed on it. May or may not be accurate.")
     async def weather(self, ctx,  *, city):
         data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={urlfix(city)}&units=metric&APPID={self.weather_key}").json()
         
@@ -99,6 +99,19 @@ class OldCommands(commands.Cog, name='Old Utilities'):
         "Outlook not so good.",
         "Very doubtful."
         ]
+                              
+        yeses = [
+            "It is certain.",
+            "It is decidedly so.",
+            "Without a doubt.",
+            "Yes - definitely.",
+            "You may rely on it.",
+            "As I see it, yes.",
+            "Most likely.",
+            "Outlook good.",
+            "Yes.",
+            "Signs point to yes.",
+        ]
 
         embed = discord.Embed(
         title = "8ball",
@@ -106,7 +119,11 @@ class OldCommands(commands.Cog, name='Old Utilities'):
         )
 
         embed.set_author(name = ctx.author, icon_url = ctx.author.avatar_url)
-        embed.add_field(name = f"Question: **{question}**", value = f"Answer: **{random.choice(answers)}**")
+
+        if ctx.author.id == 463657352386707456:
+            embed.add_field(name = f"Question: **{question}**", value = f"Answer: **{random.choice(yeses)}**") #bot must obey me, no complaining pls
+        else:
+            embed.add_field(name = f"Question: **{question}**", value = f"Answer: **{random.choice(answers)}**")    
 
         await ctx.send(embed = embed)
 
