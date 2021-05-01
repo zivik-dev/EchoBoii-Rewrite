@@ -42,7 +42,7 @@ class Utils(commands.Cog, name = "Utilities"):
         else:
             await ctx.send(cleanBraces(htm.fromstring(data.text.split('<p>')[1].split('</p>')[0]).text_content()))
 
-    @commands.command(name="Google Translate", aliases=['gtrans', 'translate'], brief='Translate text to a wide variety of languages.', description='This command translates text to another language. Usage: eb translate en jus de chocolat (Output -> Chocolate Juice)')
+    @commands.command(name="translate", aliases=['gtrans'], brief='Translate text to a wide variety of languages.', description='This command translates text to another language. Usage: eb translate en jus de chocolat (Output -> Chocolate Juice)')
     async def gtrans(self, ctx, langcode, *, text):
         tobj = translator.translate(text, dest=langcode)
         srcl = Language.make(language=tobj.src).display_name()
@@ -61,6 +61,7 @@ class Utils(commands.Cog, name = "Utilities"):
         
         await ctx.send('Message Sent :white_check_mark:')
 
+    # UNDER DEVELOPENT, DOESNT WORK YET
     @commands.command(name='timein', brief='Get your time in some other timezone!!', description='This command will convert a given time of your timezone to another specified timezone. Supports both 12-hour time and 24-hour time input. Outputs 24-hour time. Only accepts timezone regions like \'Asia/Kolkata\' as parameters. Formats like \'EST\' or \'IST\' are not allowed!')
     async def timein(self, ctx, your_tz, convert_time, convertTo_tz):
         local_time = convert_time
