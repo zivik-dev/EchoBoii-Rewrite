@@ -5,6 +5,8 @@ import random
 import os
 from urllib.parse import quote as urlfix
 
+allowedPeopleFor8Ball = [690400661786984468, 511118225900306432, 605139633105272862, 463657352386707456]
+
 class OldCommands(commands.Cog, name='Old Utilities'):
     """commands copy-pasted from legacy version because they were already perfect (pls dont hate us for this lmao)"""
     def __init__(self, bot):
@@ -120,7 +122,7 @@ class OldCommands(commands.Cog, name='Old Utilities'):
 
         embed.set_author(name = ctx.author, icon_url = ctx.author.avatar_url)
 
-        if ctx.author.id == 463657352386707456:
+        if ctx.author.id in allowedPeopleFor8Ball:
             embed.add_field(name = f"Question: **{question}**", value = f"Answer: **{random.choice(yeses)}**") #bot must obey me, no complaining pls
         else:
             embed.add_field(name = f"Question: **{question}**", value = f"Answer: **{random.choice(answers)}**")    
