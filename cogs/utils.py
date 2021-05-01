@@ -77,8 +77,8 @@ class Utils(commands.Cog, name = "Utilities"):
             await ctx.send('Timezones should be in the following format:\n`Asia/Kolkata`\nPlease avoid using format like:\n`IST` or `CEST`')
 
         utcnow = datetime.datetime.utcnow()
-        timestr = f'{utcnow.year}-{utcnow.month}-{utcnow.day} {local_time[0]}:{local_time[1]}:{utcnow.second}.{utcnow.microsecond}'
-        datetime_tobj = datetime.datetime.strptime(timestr, '%Y-%m-%d %H:%M:%S.%f')
+        timestr = f'{local_time[0]}:{local_time[1]}'
+        datetime_tobj = datetime.datetime.strptime(timestr, '%H:%M')
 
         try:
             converted_dtobj = datetime_tobj.astimezone(pytz.timezone(convert_tz))
