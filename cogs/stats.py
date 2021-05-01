@@ -6,6 +6,7 @@ import time
 start_time = time.time()
 
 class Misc(commands.Cog, name='Misc'):
+    """Misc Commands, mostly for development use."""
     def __init__(self, bot):
         self.bot = bot
 
