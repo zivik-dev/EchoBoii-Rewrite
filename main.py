@@ -16,7 +16,8 @@ initial_extensions = [
     "cogs.errorHandler",
     "cogs.mostUsed",
     "cogs.stats",
-    "cogs.oldUtils"
+    "cogs.oldUtils",
+    "cogs.youtube"
 ]
 
 if __name__ == '__main__':
