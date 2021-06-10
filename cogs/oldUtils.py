@@ -5,7 +5,7 @@ import random
 import os
 from urllib.parse import quote as urlfix
 
-allowedPeopleFor8Ball = [690400661786984468, 511118225900306432, 605139633105272862, 463657352386707456]
+allowedPeopleFor8Ball = ["sorry im not interested in revealing my friend\'s IDs. thank you braxton"]
 
 class OldCommands(commands.Cog, name='Old Utilities'):
     """commands copy-pasted from legacy version because they were already perfect (pls dont hate us for this lmao)"""
